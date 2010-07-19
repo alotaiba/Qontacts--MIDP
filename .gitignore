@@ -1,0 +1,14 @@
+# Compiled source #
+###################
+bin/
+deployed/
+
+# Eclipse Specifics #
+#####################
+mtj-build/
+.mtj.tmp/
+.processed/
+.settings/
+.classpath
+.mtj
+.project
