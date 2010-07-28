@@ -1,7 +1,7 @@
-MIDlet-1: Qontacts,/icon26.png,com.mawqey.qontacts.main.Qontacts
+MIDlet-1: Qontacts,/icon80.png,com.mawqey.qontacts.main.Qontacts
 MIDlet-Jar-URL: Qontacts.jar
 MicroEdition-Configuration: CLDC-1.0
-MIDlet-Version: 1.0
+MIDlet-Version: 1.1.1
 MIDlet-Name: Qontacts
 MIDlet-Vendor: Abdulrahman S. K. Alotaiba
 MIDlet-Info-URL: http://www.qontactsapp.com/

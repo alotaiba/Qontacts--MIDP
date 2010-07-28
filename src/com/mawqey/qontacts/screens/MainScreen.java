@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-//#ifndef Series40
-//#define Series40
+//#ifndef S60E5
+//#define S60E5
 //#endif
 
 package com.mawqey.qontacts.screens;
 //#if S60E5||S60E3FP2||S60E3FP1
-//@import javax.microedition.io.ConnectionNotFoundException;
+import javax.microedition.io.ConnectionNotFoundException;
 //#endif
 import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.CommandListener;
@@ -60,9 +60,9 @@ public class MainScreen extends Form implements CommandListener, ItemCommandList
 		this.addCommand(this.exit);
 		this.setCommandListener(this);
 		//#if S60E5||S60E3FP2||S60E3FP1
-//@		this.openLink = new Command(this.l10n.getString("OPEN"), Command.SCREEN, 1);
-//@		items[2].setDefaultCommand(this.openLink);
-//@		items[2].setItemCommandListener(this);
+		this.openLink = new Command(this.l10n.getString("OPEN"), Command.SCREEN, 1);
+		items[2].setDefaultCommand(this.openLink);
+		items[2].setItemCommandListener(this);
 		//#endif
 		this.midlet.displayManager.display.setCurrentItem(items[0]);
 	}
@@ -83,11 +83,11 @@ public class MainScreen extends Form implements CommandListener, ItemCommandList
 	public void commandAction(Command command, Item item) {
 		if (command == this.openLink) {
 			//#if S60E5||S60E3FP2||S60E3FP1
-//@			try {
-//@				this.midlet.platformRequest(this.midlet.mQontactsURL);
-//@			} catch (ConnectionNotFoundException e) {
-//@				e.printStackTrace();
-//@			}
+			try {
+				this.midlet.platformRequest(this.midlet.mQontactsURL);
+			} catch (ConnectionNotFoundException e) {
+				e.printStackTrace();
+			}
 			//#endif
 		}
 	}

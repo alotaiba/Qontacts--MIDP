@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-//#ifndef Series40
-//#define Series40
+//#ifndef S60E5
+//#define S60E5
 //#endif
 
 package com.mawqey.qontacts.threads;
@@ -27,7 +27,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 //#if S60E5||S60E3FP2
-//@import javax.microedition.lcdui.AlertType;
+import javax.microedition.lcdui.AlertType;
 //#endif
 import javax.microedition.pim.Contact;
 
@@ -36,13 +36,13 @@ import com.mawqey.qontacts.main.Qontacts;
 import com.mawqey.qontacts.models.ContactsModel;
 import com.mawqey.qontacts.screens.ContactsListScreen;
 //#if S60E5||S60E3FP2
-//@import com.mawqey.qontacts.screens.helpers.ProgressAlert;
+import com.mawqey.qontacts.screens.helpers.ProgressAlert;
 //#endif
 
 public class ContactsListLoadThread extends Thread {
 	L10nResources l10n;
 	//#if S60E5||S60E3FP2
-//@	private ProgressAlert analyzeProgress;
+	private ProgressAlert analyzeProgress;
 	//#endif
 	private Qontacts midlet;
 	private ContactsModel contactsModel;
@@ -52,7 +52,7 @@ public class ContactsListLoadThread extends Thread {
 		this.midlet = midlet;
 		this.contactsModel = contactsModel;
 		//#if S60E5||S60E3FP2
-//@		this.analyzeProgress = new ProgressAlert(this.l10n.getString("ANALYZING_CONTACTS") + " ...", AlertType.ALARM, this.midlet);
+		this.analyzeProgress = new ProgressAlert(this.l10n.getString("ANALYZING_CONTACTS") + " ...", AlertType.ALARM, this.midlet);
 		//#endif
 	}
 	
@@ -63,7 +63,7 @@ public class ContactsListLoadThread extends Thread {
 			e.printStackTrace();
 		}
 		//#if S60E5||S60E3FP2
-//@		this.analyzeProgress.show();
+		this.analyzeProgress.show();
 		//#endif
 		Vector contactItems = this.contactsModel.getContactsItems();
 		Vector contactNames = new Vector();
@@ -79,7 +79,7 @@ public class ContactsListLoadThread extends Thread {
 		String[] contactNamesStrings = new String[count]; 
 		contactNames.copyInto(contactNamesStrings);
 		//#if S60E5||S60E3FP2
-//@		this.analyzeProgress.remove();
+		this.analyzeProgress.remove();
 		//#endif
 		
 		//Mark all as selected

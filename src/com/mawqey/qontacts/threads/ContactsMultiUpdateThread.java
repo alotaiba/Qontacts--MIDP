@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-//#ifndef Series40
-//#define Series40
+//#ifndef S60E5
+//#define S60E5
 //#endif
 
 package com.mawqey.qontacts.threads;
@@ -34,12 +34,12 @@ import com.mawqey.qontacts.main.Qontacts;
 import com.mawqey.qontacts.models.ContactsModel;
 import com.mawqey.qontacts.screens.ContactsListScreen;
 //#if S60E5||S60E3FP2
-//@import com.mawqey.qontacts.screens.helpers.ProgressAlert;
+import com.mawqey.qontacts.screens.helpers.ProgressAlert;
 //#endif
 public class ContactsMultiUpdateThread extends Thread {
 	L10nResources l10n;
 	//#if S60E5||S60E3FP2
-//@	private ProgressAlert updateProgress;
+	private ProgressAlert updateProgress;
 	//#endif
 	private ContactsListScreen listScreen;
 	private Qontacts midlet;
@@ -57,7 +57,7 @@ public class ContactsMultiUpdateThread extends Thread {
 		this.selectedContactsCount = this.listScreen.getSelectedFlags( this.contactsSelectionState );
 		this.selectedContactsConvertedCount = 0;
 		//#if S60E5||S60E3FP2
-//@		this.updateProgress = new ProgressAlert(this.l10n.getString("UPDATING_CONTACTS") + " (" + this.selectedContactsConvertedCount + "/" + this.selectedContactsCount + ")", AlertType.INFO, this.selectedContactsCount, this.selectedContactsConvertedCount, this.midlet);
+		this.updateProgress = new ProgressAlert(this.l10n.getString("UPDATING_CONTACTS") + " (" + this.selectedContactsConvertedCount + "/" + this.selectedContactsCount + ")", AlertType.INFO, this.selectedContactsCount, this.selectedContactsConvertedCount, this.midlet);
 		//#endif
 	}
 	
@@ -78,21 +78,21 @@ public class ContactsMultiUpdateThread extends Thread {
 		try {
 			updateDataThread.start();
 			//#if S60E5||S60E3FP2
-//@			Thread.sleep(100);
-//@			this.updateProgress.show();
+			Thread.sleep(100);
+			this.updateProgress.show();
 			//#endif
 			while(this.selectedContactsConvertedCount < this.selectedContactsCount) {
 				//#if S60E5||S60E3FP2
-//@				this.updateProgress.progressBar.setValue(this.selectedContactsConvertedCount);
-//@				this.updateProgress.setString(this.l10n.getString("UPDATING_CONTACTS") + " (" + this.selectedContactsConvertedCount + "/" + this.selectedContactsCount + ")");
+				this.updateProgress.progressBar.setValue(this.selectedContactsConvertedCount);
+				this.updateProgress.setString(this.l10n.getString("UPDATING_CONTACTS") + " (" + this.selectedContactsConvertedCount + "/" + this.selectedContactsCount + ")");
 				//#endif
 				Thread.sleep(50);
 			}
 			//#if S60E5||S60E3FP2
-//@			this.updateProgress.progressBar.setValue(this.selectedContactsCount);
-//@			this.updateProgress.setString(this.l10n.getString("UPDATING_CONTACTS") + " (" + this.selectedContactsCount + "/" + this.selectedContactsCount + ")");
-//@			Thread.sleep(500);
-//@			this.updateProgress.remove();
+			this.updateProgress.progressBar.setValue(this.selectedContactsCount);
+			this.updateProgress.setString(this.l10n.getString("UPDATING_CONTACTS") + " (" + this.selectedContactsCount + "/" + this.selectedContactsCount + ")");
+			Thread.sleep(500);
+			this.updateProgress.remove();
 			//#endif
 			Thread.sleep(150);
 			Alert successAlert = new Alert(this.l10n.getString("SUCCESS"), this.selectedContactsConvertedCount + " " + this.l10n.getString("STRING_CONTACTSSCREEN_UPDATE_QUESTION_CONTACTS") + " " + this.l10n.getString("STRING_CONTACTSSCREEN_UPDATED_SUCCESSFULLY"), null, AlertType.CONFIRMATION);
